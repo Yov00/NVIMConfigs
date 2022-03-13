@@ -20,6 +20,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    "CocInstall coc-omnisharp
+Plug 'markwoodhall/vim-nuget'
+Plug 'Shougo/deoplete.nvim'
+Plug 'mattn/webapi-vim'
 
 Plug 'valloric/MatchTagAlways'
 Plug 'jiangmiao/auto-pairs'
@@ -36,6 +39,7 @@ set termguicolors
 "colorscheme onehalfdark
 colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
+:set t_k
 
 
 " Autocompletion
