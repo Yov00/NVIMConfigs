@@ -18,6 +18,9 @@ Plug 'tpope/vim-fugitive' 			"DOCUMENTATION: https://github.com/tpope/vim-fugiti
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+"Comment lines
+Plug 'tpope/vim-commentary'
+
 "nerd fonts required for the icons
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
@@ -66,6 +69,7 @@ let g:ale_linters = {
 
 " Open NERDTree automatically
 autocmd  VimEnter * NERDTree
+autocmd BufEnter * lcd %:p:h
 
 " How tab behaves while picking auto complete.
 let g:SuperTabMappingForward = '<S-Tab>'
@@ -108,3 +112,19 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
+
+"Omnisharp config
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier',
+  \ 'coc-html',
+  \ 'coc-omnisharp',
+  \ 'coc-json', 
+  \ ]
+
+"https://www.youtube.com/watch?v=zi2pReTFRG8  --- Instalation for full stack
+"on windows
