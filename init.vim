@@ -3,6 +3,8 @@ filetype off			" required
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -42,9 +44,10 @@ call plug#end()
 syntax on
 set number
 set termguicolors
-"colorscheme onehalfdark
-colorscheme dracula
-hi Normal guibg=NONE ctermbg=NONE
+" colorscheme onehalfdark
+" colorscheme dracula
+colorscheme gruvbox
+" hi Normal guibg=NONE ctermbg=NONE
 set encoding=UTF-8
 
 " Autocompletion
@@ -128,3 +131,5 @@ let g:coc_global_extensions = [
 
 "https://www.youtube.com/watch?v=zi2pReTFRG8  --- Instalation for full stack
 "on windows
+
+
