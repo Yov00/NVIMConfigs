@@ -1,10 +1,13 @@
 set nocompatible		" be VI Improved, required
 filetype off			" required
+:set textwidth=0 
+:set wrapmargin=0
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 
+"Cool line at the bottom, showing me info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -17,8 +20,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive' 			"DOCUMENTATION: https://github.com/tpope/vim-fugitive
 
 "File navigation
+"Note: sudo apt install ripgrep | For ':Rg'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter' "searches for .git and starts directs fzf
+
 
 "Comment lines
 Plug 'tpope/vim-commentary'
@@ -31,6 +37,9 @@ Plug 'preservim/nerdtree' |
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    "CocInstall coc-omnisharp
+
+"HTML
+Plug 'mattn/emmet-vim' " C+y+, key combo
 
 Plug 'valloric/MatchTagAlways'
 Plug 'jiangmiao/auto-pairs'
@@ -117,8 +126,22 @@ let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
 "Omnisharp config
+augroup my_omnisharp
+    autocmd!
+    au FileType cs nmap <buffer> <silent> ga :OmniSharpGetCodeActions<CR>
+    au FileType cs nmap <buffer> <silent> gd :OmniSharpGotoDefinition<CR>
+    au FileType cs nmap <buffer> <silent> gq :OmniSharpCodeFormat<CR>
+    au FileType cs nmap <buffer> <silent> gu :OmniSharpFixUsings<CR>
+    au FileType cs nmap <buffer> <silent> gr :OmniSharpFindUsages<CR>
+    au FileType cs nmap <buffer> <silent> gK :OmniSharpDocumentation<CR>
+    au FileType cs nmap <buffer> <silent> <F2> :OmniSharpRename<CR>
+augroup END
+
+" Appy html syntax highlighting to .cshtml
+autocmd BufNewFile,BufRead *.cshtml set syntax=html
+
 " coc config
-let g:coc_global_extensions = [
+let g:coc_lobal_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
@@ -129,7 +152,14 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
-"https://www.youtube.com/watch?v=zi2pReTFRG8  --- Instalation for full stack
-"on windows
+" Emmet conf.
+let g:user_emmet_mode='n'
+let g:user_emmet_leader_key=',' "re-define the leader key
 
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,cshtml,css EmmetInstall
+
+
+""https://www.youtube.com/watch?v=zi2pReTFRG8  --- Instalation for full stack
+"on windows
 
