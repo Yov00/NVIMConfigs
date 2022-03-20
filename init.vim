@@ -1,11 +1,15 @@
 set nocompatible		" be VI Improved, required
 filetype off			" required
-:set textwidth=0 
-:set wrapmargin=0
+set textwidth=0 
+set wrapmargin=0
 
 call plug#begin('~/.config/nvim/plugged')
+"Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'tanvirtin/monokai.nvim'
+Plug 'sainnhe/everforest'
 
 "Cool line at the bottom, showing me info
 Plug 'vim-airline/vim-airline'
@@ -37,9 +41,12 @@ Plug 'preservim/nerdtree' |
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    "CocInstall coc-omnisharp
+Plug 'puremourning/vimspector' "debuger
 
 "HTML
 Plug 'mattn/emmet-vim' " C+y+, key combo
+"CSS
+Plug 'ap/vim-css-color'
 
 Plug 'valloric/MatchTagAlways'
 Plug 'jiangmiao/auto-pairs'
@@ -53,9 +60,11 @@ call plug#end()
 syntax on
 set number
 set termguicolors
-" colorscheme onehalfdark
+
+colorscheme onehalfdark
 " colorscheme dracula
-colorscheme gruvbox
+" colorscheme gruvbox
+
 " hi Normal guibg=NONE ctermbg=NONE
 set encoding=UTF-8
 
@@ -155,6 +164,11 @@ let g:coc_lobal_extensions = [
 " Emmet conf.
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=',' "re-define the leader key
+
+"Debuger conf.
+"---enables the default set of mappings
+let g:vimspector_enable_mappings = 'HUMAN'
+
 
 "let g:user_emmet_install_global = 0
 "autocmd FileType html,cshtml,css EmmetInstall
